@@ -5,4 +5,8 @@ class ProfilesController < ApplicationController
     redirect_to profile_path current_user.id
   end
 
+  def show
+    @twits = Twit.my_twits current_user.id
+  end
+
 end
