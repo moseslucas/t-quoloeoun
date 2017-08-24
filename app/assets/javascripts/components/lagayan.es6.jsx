@@ -11,6 +11,8 @@ class Lagayan extends React.Component {
           <li className="list-group-item"><label>Following: </label> <text className="pull-right">0</text></li>
           <li className="list-group-item"><label>Followers: </label> <text className="pull-right">0</text></li>
           <li className="list-group-item"><label>Member Since: </label> <text className="pull-right">{this.format_date(p.user.created_at)}</text></li>
+          <li className="list-group-item"><button className="btn btn-primary btn-block">
+            <i className="fa fa-twitter"></i> Follow</button></li>
         </ul>
       </div>
     )
