@@ -32,6 +32,7 @@ gem 'react-rails'
 gem 'validates_email_format_of'
 gem 'mysql2', '~> 0.4.5'
 gem 'haml'
+gem "font-awesome-rails"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
