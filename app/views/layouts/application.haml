@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Depot
+    %title T-Quoloeoun
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -36,7 +36,6 @@
           %a.navbar-brand{id: "new_twit", data:{toggle: "modal", target: "#modal_new_twit"} }
             = fa_icon "edit"
             Tweet
-
 .jumbotron
   .container-fluid
     = yield

@@ -5,7 +5,9 @@ class Twit < ApplicationRecord
 
   def self.my_twits(id)
     #replace 1 with params[:id]
-    Twit.select(:content).joins(:user).where(users:{id: id})
+    Twit.select("users.email, content, twits.created_at").
+    joins(:user).where(users:{id: id}).
+    order("twits.created_at DESC")
   end
 
 

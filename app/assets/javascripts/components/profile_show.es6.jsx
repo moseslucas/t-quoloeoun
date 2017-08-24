@@ -5,29 +5,64 @@ class ProfileShow extends React.Component {
     this.modal = {
       id: "modal_new_twit",
       size: "modal-xs",
-      icon: "<i class='fa fa-edit'></i>",
-      title: "New Twit"
+      icon: "fa fa-edit",
+      title: "New Tweet"
     }
     this.state = {
-      twits: props.twits
+      twits: props.twits,
+      twit: ""
     }
   }
 
   componentDidMount(){
   }
 
+  tweet(tweet){
+		$.ajax({
+			url: `/twits`,
+			data: {tweet: tweet},
+			type: "POST",
+			success: (s)=>{
+				switch(s.status){
+					case "success":
+            console.log("Tweet Created")
+						// self.getAjaxRecords()
+						// toastr.success(`New Discount`,`Saved`)
+					break
+					case "error":
+						for(let err in s.error){
+							s.error[err].map((message)=>{
+                console.log(err)
+								// toastr.warning(message,err.toUpperCase())
+							})
+						}
+					break
+				}
+			},
+			error: (xhr, status, error)=>{
+				// toastr.error(`Something Happended`,`Error`)
+				console.log(`xhr: ${xhr.status}, status: ${status}, error: ${error}`)
+				// this.refs.btn_save.disabled = false
+			}
+		})
+  }
+
   renderTwits(t,i){
-    return(<li key={i}>{t.content}</li>)
+    return(
+      <div className="card" key={i}>
+        <label>{t.email}</label> <br/>
+        {t.content}
+      </div>
+    )
   }
 
   renderMain(){
     return(
       <div>
         <Modal modal={this.modal}>
-          <h1>modalto</h1>
+          <TwitForm tweet={this.tweet}/>
         </Modal>
         <Lagayan>
-          <h1>asdjkfl;asfd</h1>
           <ul>
             {this.state.twits.map(this.renderTwits)}
           </ul>

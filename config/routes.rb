@@ -8,4 +8,9 @@ Rails.application.routes.draw do
 		end
 	end
 
+  resources :twits, only: [:create, :update, :destroy, :show] do
+		collection do
+		end
+	end
+
 end
