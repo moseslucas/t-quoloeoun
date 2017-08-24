@@ -16,3 +16,9 @@
 //= require react_ujs
 //= require components
 //= require_tree .
+
+
+/* VENDORS */
+//= require jquery-3.1.1.min
+//= require bootstrap.min
+//= require bootstrap-notify
