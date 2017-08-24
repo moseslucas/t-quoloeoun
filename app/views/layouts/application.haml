@@ -33,4 +33,11 @@
               destroy_user_session_path,
               method: :DELETE,
               data:{confirm: "Are You Sure You Wanna Sign Out?"}
+
+.jumbotron
+  .container-fluid
     = yield
+  .row
+    .col-xs-12
+      %footer
+        %p &#169; Copyright 2013 Tutorial Republic
