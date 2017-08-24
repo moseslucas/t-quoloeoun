@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %title Depot
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body{:class => controller.controller_name}
+    %nav.navbar.navbar-inverse
+      / Brand and toggle get grouped for better mobile display
+      .navbar-header
+        %button.navbar-toggle{"data-target" => "#navbarCollapse", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{:href => "#"} Brand
+      / Collection of nav links, forms, and other content for toggling
+      #navbarCollapse.collapse.navbar-collapse
+        %ul.nav.navbar-nav
+          %li
+            %a{:href => "#"} Home
+          %li
+            %a{:href => "#"} Profile
+        %form.navbar-form.navbar-left
+          %input.form-control{:placeholder => "Search", :type => "text"}/
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            %a{:href => "#"} Login
+    = yield
