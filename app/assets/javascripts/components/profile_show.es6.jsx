@@ -8,25 +8,20 @@ class ProfileShow extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.state.twits)
   }
 
-  renderTwits(){
-    return(
-      <div>
-        <ul>
-        </ul>
-      </div>
-    )
+  renderTwits(t,i){
+    return(<li key={i}>{t.content}</li>)
   }
+
   renderMain(){
     return(
-      <div className="row">
-        <div className="col-xs-12">
-          <h1>asdjkfl;asfd</h1>
-        </div>
-      </div>
-
+      <Lagayan>
+        <h1>asdjkfl;asfd</h1>
+        <ul>
+          {this.state.twits.map(this.renderTwits)}
+        </ul>
+      </Lagayan>
     )
   }
   render () {
