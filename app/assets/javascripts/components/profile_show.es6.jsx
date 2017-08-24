@@ -103,8 +103,9 @@ class ProfileShow extends React.Component {
           <TwitForm tweet={this.tweet}/>
         </Modal>
         <Lagayan
+          user={this.props.user}
           total_twits={this.state.total_twits}>
-          <h3 className="text-center">My Tweets</h3>
+          <h3 className="text-center">Tweets</h3>
           <ul>
             {this.state.twits.map(this.renderTwits)}
           </ul>

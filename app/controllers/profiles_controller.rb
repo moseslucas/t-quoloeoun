@@ -14,6 +14,7 @@ class ProfilesController < ApplicationController
     def set_vars(id)
       @twits = Twit.my_twits id
       @total_twits = Twit.my_total_twits id
+      @user = User.find id
     end
 
 end
