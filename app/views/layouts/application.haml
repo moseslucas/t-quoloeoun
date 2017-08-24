@@ -33,7 +33,10 @@
               destroy_user_session_path,
               method: :DELETE,
               data:{confirm: "Are You Sure You Wanna Sign Out?"}
-          %a.navbar-brand{id: "new_twit", data:{toggle: "modal", target: "#modal_new_twit"} }
+          %a.navbar-brand.tweet{id: "new_twit",
+          title: "Post a New Tweet",
+          data:{toggle: "modal",
+          target: "#modal_new_twit"}}
             = fa_icon "edit"
             Tweet
 .jumbotron
