@@ -2,11 +2,17 @@ class ProfilesController < ApplicationController
   before_action :naka_login_ba?, only: [:index, :show]
 
   def index
-    @twits = Twit.my_twits current_user.id
+    set_vars current_user.id
   end
 
   def show
-    @twits = Twit.my_twits params[:id]
+    set_vars params[:id]
   end
+
+
+  private
+    def set_vars(id)
+      @twits = Twit.my_twits id
+    end
 
 end
