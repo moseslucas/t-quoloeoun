@@ -50,6 +50,11 @@ class ProfileShow extends React.Component {
 					case "error":
 						for(let err in s.error){
 							s.error[err].map((message)=>{
+                $.notify({
+                  message: err
+                },{
+                  type: 'danger'
+                });
                 console.log(err)
 								// toastr.warning(message,err.toUpperCase())
 							})
@@ -68,6 +73,12 @@ class ProfileShow extends React.Component {
   after_tweet(){
     $('#tweet').val('')
     $('#modal_new_twit').modal('hide')
+    $.notify({
+      message: "Your tweet has been posted"
+    },{
+      type: 'success',
+      placement: {from: "top", align: "center"},
+    });
   }
 
   renderTwits(t,i){
@@ -86,6 +97,7 @@ class ProfileShow extends React.Component {
           <TwitForm tweet={this.tweet}/>
         </Modal>
         <Lagayan>
+          <h3 className="text-center">My Tweets</h3>
           <ul>
             {this.state.twits.map(this.renderTwits)}
           </ul>
