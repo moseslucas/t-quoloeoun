@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :naka_login_ba?, only: [:index]
+  before_action :naka_login_ba?, only: [:index, :show]
 
   def index
     @twits = Twit.my_twits current_user.id
