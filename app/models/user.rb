@@ -7,4 +7,8 @@ class User < ApplicationRecord
   validates :email, :encrypted_password, presence: true
   validates :encrypted_password, length: {minimum: 6}
   validates :email, :email_format => { :message => 'Invalid Email Address' }
+
+  has_many :twits
+
+
 end
