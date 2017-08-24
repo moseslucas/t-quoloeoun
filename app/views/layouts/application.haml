@@ -21,9 +21,9 @@
         - if user_signed_in?
           %ul.nav.navbar-nav
             %li
-              %a{:href => "#"} Home
+              = link_to "Home", root_path
             %li
-              %a{:href => "#"} Profile
+              = link_to "Profile", profiles_path
           %form.navbar-form.navbar-left
             %input.form-control{:placeholder => "Search", :type => "text"}/
         %ul.nav.navbar-nav.navbar-right

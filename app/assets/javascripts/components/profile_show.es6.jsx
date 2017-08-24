@@ -42,7 +42,9 @@ class ProfileShow extends React.Component {
 			success: (s)=>{
 				switch(s.status){
 					case "success":
-            self.getTwits()
+            //will refresh only on profiles#index
+            if(self.props.restate)
+              self.getTwits()
             self.after_tweet()
 						// self.getAjaxRecords()
 						// toastr.success(`New Discount`,`Saved`)
