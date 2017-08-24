@@ -12,6 +12,7 @@ class ProfileShow extends React.Component {
     }
     this.state = {
       twits: props.twits,
+      total_twits: props.total_twits,
       twit: ""
     }
   }
@@ -43,8 +44,11 @@ class ProfileShow extends React.Component {
 				switch(s.status){
 					case "success":
             //will refresh only on profiles#index
-            if(self.props.restate)
+            if(self.props.restate){
               self.getTwits()
+              //add one to total twits only for profile
+              self.setState({total_twits: ++self.state.total_twits})
+            }
             self.after_tweet()
 						// self.getAjaxRecords()
 						// toastr.success(`New Discount`,`Saved`)
@@ -98,7 +102,8 @@ class ProfileShow extends React.Component {
         <Modal modal={this.modal}>
           <TwitForm tweet={this.tweet}/>
         </Modal>
-        <Lagayan>
+        <Lagayan
+          total_twits={this.state.total_twits}>
           <h3 className="text-center">My Tweets</h3>
           <ul>
             {this.state.twits.map(this.renderTwits)}
