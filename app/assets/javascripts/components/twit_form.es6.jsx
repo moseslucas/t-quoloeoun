@@ -6,11 +6,13 @@ class TwitForm extends React.Component {
   }
 
   tweet(){
-    const tweet =
-    document.getElementById("tweet").value
-    if(tweet!=""){
-      this.props.tweet(tweet)
-    }
+    // if(e.key === 'Enter'){
+      const tweet =
+      document.getElementById("tweet").value
+      if(tweet!=""){
+        this.props.tweet(tweet)
+      }
+    // }
   }
 
   renderMain(){

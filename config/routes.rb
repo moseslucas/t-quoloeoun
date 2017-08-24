@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :twits, only: [:create, :update, :destroy, :show] do
 		collection do
+      get :my_twits
 		end
 	end
 

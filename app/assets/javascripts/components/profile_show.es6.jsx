@@ -2,6 +2,8 @@ class ProfileShow extends React.Component {
   constructor(props){
     super(props)
     this.renderMain = this.renderMain.bind(this)
+    this.getTwits = this.getTwits.bind(this)
+    this.tweet = this.tweet.bind(this)
     this.modal = {
       id: "modal_new_twit",
       size: "modal-xs",
@@ -17,15 +19,31 @@ class ProfileShow extends React.Component {
   componentDidMount(){
   }
 
+	getTwits(){
+		self = this
+		$.ajax({
+			url: `/twits/my_twits`,
+			type: "GET",
+			success: (s)=>{
+				self.setState({twits: s})
+			},
+			error: (xhr, status, error)=>{
+				console.log(`xhr: ${xhr.status}, status: ${status}, error: ${error}`)
+			}
+		})
+	}
+
   tweet(tweet){
+    self = this
 		$.ajax({
 			url: `/twits`,
-			data: {tweet: tweet},
+			data: {content: tweet},
 			type: "POST",
 			success: (s)=>{
 				switch(s.status){
 					case "success":
-            console.log("Tweet Created")
+            self.getTwits()
+            self.after_tweet()
 						// self.getAjaxRecords()
 						// toastr.success(`New Discount`,`Saved`)
 					break
@@ -45,6 +63,11 @@ class ProfileShow extends React.Component {
 				// this.refs.btn_save.disabled = false
 			}
 		})
+  }
+
+  after_tweet(){
+    $('#tweet').val('')
+    $('#modal_new_twit').modal('hide')
   }
 
   renderTwits(t,i){
@@ -70,6 +93,7 @@ class ProfileShow extends React.Component {
       </div>
     )
   }
+
   render () {
     return this.renderMain()
   }
