@@ -6,10 +6,12 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body{:class => controller.controller_name}
-    %nav.navbar.navbar-inverse
+    %nav.navbar.navbar-inverse.navbar-fixed-top
       / Brand and toggle get grouped for better mobile display
       .navbar-header
-        %button.navbar-toggle{"data-target" => "#navbarCollapse", "data-toggle" => "collapse", :type => "button"}
+        %button.navbar-toggle{"data-target" => "#navbarCollapse",
+        "data-toggle" => "collapse",
+        :type => "button"}
           %span.sr-only Toggle navigation
           %span.icon-bar
           %span.icon-bar
@@ -17,7 +19,6 @@
         %a.navbar-brand
           = fa_icon "twitter"
           Twiter
-      / Collection of nav links, forms, and other content for toggling
       #navbarCollapse.collapse.navbar-collapse
         - if user_signed_in?
           %ul.nav.navbar-nav
@@ -28,6 +29,13 @@
           %form.navbar-form.navbar-left
             %input.form-control{:placeholder => "Search", :type => "text"}/
           %ul.nav.navbar-nav.navbar-right
+
+            %a.navbar-brand.tweet{id: "new_twit",
+            title: "Post a New Tweet",
+            data:{toggle: "modal",
+            target: "#modal_new_twit"}}
+              = fa_icon "edit"
+              Tweet
             %li.dropdown
               %a.dropdown-toggle.tweet{"data-toggle" => "dropdown"}
                 = current_user.email
@@ -38,12 +46,6 @@
                   destroy_user_session_path,
                   method: :DELETE,
                   data:{confirm: "Are You Sure You Wanna Sign Out?"}
-            %a.navbar-brand.tweet{id: "new_twit",
-            title: "Post a New Tweet",
-            data:{toggle: "modal",
-            target: "#modal_new_twit"}}
-              = fa_icon "edit"
-              Tweet
 .jumbotron
   .container-fluid
     = yield
