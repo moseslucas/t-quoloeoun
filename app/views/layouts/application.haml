@@ -14,8 +14,9 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.navbar-brand{:href => "#"}
+        %a.navbar-brand
           = fa_icon "twitter"
+          Twiter
       / Collection of nav links, forms, and other content for toggling
       #navbarCollapse.collapse.navbar-collapse
         - if user_signed_in?
@@ -26,19 +27,23 @@
               = link_to "Profile", profiles_path
           %form.navbar-form.navbar-left
             %input.form-control{:placeholder => "Search", :type => "text"}/
-        %ul.nav.navbar-nav.navbar-right
-          %li
-            - if user_signed_in?
-              = link_to "Sign-Out",
-              destroy_user_session_path,
-              method: :DELETE,
-              data:{confirm: "Are You Sure You Wanna Sign Out?"}
-          %a.navbar-brand.tweet{id: "new_twit",
-          title: "Post a New Tweet",
-          data:{toggle: "modal",
-          target: "#modal_new_twit"}}
-            = fa_icon "edit"
-            Tweet
+          %ul.nav.navbar-nav.navbar-right
+            %li.dropdown
+              %a.dropdown-toggle.tweet{"data-toggle" => "dropdown"}
+                = current_user.email
+                %b.caret
+              %ul.dropdown-menu
+                %li
+                  = link_to "Sign-Out",
+                  destroy_user_session_path,
+                  method: :DELETE,
+                  data:{confirm: "Are You Sure You Wanna Sign Out?"}
+            %a.navbar-brand.tweet{id: "new_twit",
+            title: "Post a New Tweet",
+            data:{toggle: "modal",
+            target: "#modal_new_twit"}}
+              = fa_icon "edit"
+              Tweet
 .jumbotron
   .container-fluid
     = yield
