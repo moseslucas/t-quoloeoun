@@ -6,7 +6,11 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    set_vars params[:id]
+    if "#{params[:id]}" == "#{current_user.id}"
+      redirect_to profiles_path
+    else
+      set_vars params[:id]
+    end
   end
 
 
